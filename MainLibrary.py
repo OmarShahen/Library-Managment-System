@@ -1,18 +1,31 @@
-from person import person
-from librarian import librarian
-from book import book
 
+from LibrarySystem import library_system
 
 if __name__ == '__main__':
-    
-    print("Running")
-    libObj1 = person("Omar","Shahen77")
-    libObj2 = person("Reda","Reda200")
-    obj = librarian("Omar","Shahen88","omarReda@gmail.com","MoustafaKamel","Alexandria",1065630331)
-    bookObj = book("@Omar","The 10X Rule","Grant Cardonr","Dale",7)
 
-    print(bookObj)
-    print(obj.get_email())
+    libraryObject = library_system()
+
+    while(True):
+
+        print("1.Admin login")
+        print("2.Librarian login")
+        print("0.Exit")
+        choice = int(input("Choose option: "))
+
+        if choice == 1:
+            adminName = input("Enter Admin Name: ")
+            adminPassword = input("Enter Admin Password: ")
+            libraryObject.admin_login(adminName,adminPassword)
+
+        elif choice == 2: 
+            librarianName = input("Enter Librarian Name: ")
+            librarianPassword = input("Enter Librarian Password: ")
+        elif choice == 0:
+            break
+        
+        else:
+
+            print("There is no other option")
     
     
     
