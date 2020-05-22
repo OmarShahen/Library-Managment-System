@@ -1,6 +1,6 @@
 from admin import admin
 from book import book
-from librarian import librarian
+from Librarian import librarian
 class library_system:
 
     def __init__(self):
@@ -11,6 +11,7 @@ class library_system:
     def add_librarian(self,name,password,email,address,city,contact):
         librarianObject = librarian(name,password,email,address,city,contact)
         self.librarian_list.append(librarianObject)
+        print('Added Successfully')
     
     def view_librarians(self):
         for i in self.librarian_list:
@@ -32,11 +33,6 @@ class library_system:
         if found == False:
             print("This ID does not Exist")
 
-
-
-
-
-    
 
     def admin_login(self,inputAdminName,inputAdminPassword):
         if inputAdminName != self.admin.get_name() or inputAdminPassword != self.admin.get_password():
@@ -67,11 +63,45 @@ class library_system:
                 librarianID = int(input("Librarian ID: "))
                 self.delete_librarian(librarianID)
             
+            elif choice == 4:
+                return
+    
+    def librarian_login(self,input_librarian_name,input_librarian_password):
 
-            
 
-            elif choice == 0:
-                return 
+        validName = False
+        validPassword = False
+
+        for names in self.librarian_list:
+            if names.get_name() == input_librarian_name:
+                print('In the condition')
+                validName = True
+                break
+        print('Finished looping')
+        if validName == False:
+            print('This Name doesnot Exist')
+            return
+        print('Entering the second loop')
+        for passwords in self.librarian_list:
+            if passwords.get_password() == input_librarian_password:
+                print('In the condition')
+                validPassword = True
+                break
+        print('Finished looping')
+        if validPassword == False:
+            print('Wrong Password')
+            return
+        print('Finished last condition')
+        if validPassword == True and validName == True:
+            print('Successful Login')
+        
+
+
+
+    
+
+
+
     
 
     

@@ -20,6 +20,8 @@ if __name__ == '__main__':
         elif choice == 2: 
             librarianName = input("Enter Librarian Name: ")
             librarianPassword = input("Enter Librarian Password: ")
+            libraryObject.librarian_login(librarianName,librarianPassword)
+            
         elif choice == 0:
             break
         
