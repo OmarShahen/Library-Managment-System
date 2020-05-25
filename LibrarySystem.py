@@ -18,6 +18,7 @@ class library_system:
         self.book_list.append(book("The 10X Rule","Grant Cardone","VIP",7))
         self.book_list.append(book("The 5 AM Club","Robin Sharma","VIP",5))
         self.book_list.append(book("Power of habbit","Reda","VIP",1))
+
     
     def add_librarian(self,name,password,email,address,city,contact):
         librarianObject = librarian(name,password,email,address,city,contact)
@@ -59,7 +60,7 @@ class library_system:
 
     def issue_book(self,bookName,studentID,studentName,studentContact):
         found = False
-        studentObject = student(studentName,studentName,studentContact)
+        studentObject = student(studentName,studentID,studentContact)
         self.student_list.append(studentObject)
         for book in self.book_list:
             if book.get_book_name() == bookName:
@@ -78,8 +79,28 @@ class library_system:
     def view_issued_books(self):
         for i in self.issued_books_list:
             print(i.get_book_name(), " " , i.get_studentIssue().get_student_name())
-            
+    
+    def view_students(self):
 
+        for student in self.student_list:
+            print(student)
+
+    def return_book(self,bookName,studentID):
+        i = 0
+        for book in self.issued_books_list:
+            print('book loop')
+            
+            if book.get_book_name() == bookName:
+                print('book name is equal')
+                for student in self.student_list:
+                    print('student loop')
+                    if student.get_student_ID() == studentID:
+                        print('student id is equal')
+                        book.increment_book_quantity()
+                        del self.issued_books_list[i]
+                        print("Book returned Successfully")
+                        return
+            i += 1
 
 
     def admin_login(self,inputAdminName,inputAdminPassword):
@@ -176,38 +197,12 @@ class library_system:
             elif choice == 4:
                 self.view_issued_books()
             
-
+            elif choice == 5:
+                bookname = input("Book Name: ")
+                studentID = int(input("Student ID: "))
+                self.return_book(bookname,studentID)
 
             elif choice == 6:
                 break
-
-
-
-            
-        
-
-
-
-    
-
-
-
-    
-
-    
-
-
-
-        
-
-
-
-
-
-
-        
-
-
-
 
 

@@ -18,10 +18,10 @@ class student:
         return self.student_ID
     
     def set_student_contact(self,contact):
-        self.student_contact = contatct
+        self.student_contact = contact
     def get_student_contact(self):
         return self.student_contact
     
     def __str__(self):
-        return self.student_name + " " + self.get_student_ID 
+        return self.student_name + " " + str(self.student_ID)
 
